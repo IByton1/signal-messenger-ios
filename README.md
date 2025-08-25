@@ -41,6 +41,32 @@ Diese App ist eine experimentelle Ende-zu-Ende verschlüsselte Chat-Anwendung f�
 2. Öffne `chat.xcworkspace` in Xcode.
 3. Wähle dein Team für das Codesigning und starte die App auf einem Gerät oder Simulator.
 
+## Aufbau und grundlegende Bedienung
+
+### App entsperren
+
+- Beim ersten Start ist ein Standard-Muster hinterlegt: `0,2,6,8`. Die Zahlen entsprechen den Feldern eines 3×3-Gitters, beginnend oben links (`0`) bis unten rechts (`8`).
+- Liegt ein falsches Muster vor, kann das Eingabefeld durch einen langen Druck (3 Sekunden) auf das rechte untere Feld zurückgesetzt werden.
+
+### Passwort/Entsperrmuster ändern
+
+1. Nach dem Entsperren befindest du dich in der Chat-Übersicht.
+2. Tippe oben rechts auf das Zahnrad-Symbol.
+3. Wähle **„Muster ändern“** und tippe dein neues 4‑Punkte-Muster ein.
+
+### Kontakt anlegen
+
+1. In der Chat-Übersicht auf das **Plus-Symbol** rechts unten tippen.
+2. Einen Namen vergeben und den Kontakt erstellen.
+
+### Peer-to-Peer verbinden & Fingerabdruck prüfen
+
+1. Öffne einen Kontakt und tippe oben rechts auf das Antennen-Symbol (**„Verbinden“**).
+2. Beide Geräte starten eine direkte Verbindung und tauschen Handschlag-Daten aus.
+3. Nach dem Handschlag zeigt die App einen Fingerprint als QR-Code an.
+4. Gerät A scannt den Code von Gerät B und umgekehrt (A ⇄ B).
+5. Stimmen beide Fingerprints überein, markiert die App die Verbindung als vertrauenswürdig und ihr könnt sicher chatten.
+
 ## Hinweise
 
 - Ports `3000` (HTTP/Socket) und `4000` (Lizenzserver) müssen vom iOS-Gerät aus erreichbar sein.
