@@ -1,0 +1,55 @@
+PODS:
+  - CocoaLumberjack (3.7.4):
+    - CocoaLumberjack/Core (= 3.7.4)
+  - CocoaLumberjack/Core (3.7.4)
+  - GRDB.swift/SQLCipher (6.24.1):
+    - SQLCipher (>= 3.4.2)
+  - KeychainAccess (4.2.2)
+  - LibSignalClient (0.77.0)
+  - SignalCoreKit (1.0.0):
+    - CocoaLumberjack (~> 3.7.4)
+  - SQLCipher (4.9.0):
+    - SQLCipher/standard (= 4.9.0)
+  - SQLCipher/common (4.9.0)
+  - SQLCipher/standard (4.9.0):
+    - SQLCipher/common
+
+DEPENDENCIES:
+  - GRDB.swift/SQLCipher
+  - KeychainAccess
+  - LibSignalClient (from `https://github.com/signalapp/libsignal.git`, tag `v0.77.0`)
+  - SignalCoreKit (from `https://github.com/signalapp/SignalCoreKit.git`)
+
+SPEC REPOS:
+  trunk:
+    - CocoaLumberjack
+    - GRDB.swift
+    - KeychainAccess
+    - SQLCipher
+
+EXTERNAL SOURCES:
+  LibSignalClient:
+    :git: https://github.com/signalapp/libsignal.git
+    :tag: v0.77.0
+  SignalCoreKit:
+    :git: https://github.com/signalapp/SignalCoreKit.git
+
+CHECKOUT OPTIONS:
+  LibSignalClient:
+    :git: https://github.com/signalapp/libsignal.git
+    :tag: v0.77.0
+  SignalCoreKit:
+    :commit: 52afaa82ef9a123ddf1fa219b71619fefa35c67e
+    :git: https://github.com/signalapp/SignalCoreKit.git
+
+SPEC CHECKSUMS:
+  CocoaLumberjack: 543c79c114dadc3b1aba95641d8738b06b05b646
+  GRDB.swift: 136dcb5d8dddca50aae3ba7d77475f79e7232cd8
+  KeychainAccess: c0c4f7f38f6fc7bbe58f5702e25f7bd2f65abf51
+  LibSignalClient: 9bf17480c85360638b00ee6d370293707efb99f2
+  SignalCoreKit: 7658a72244fa81858df4618e92044b0db0dcf59e
+  SQLCipher: 31878d8ebd27e5c96db0b7cb695c96e9f8ad77da
+
+PODFILE CHECKSUM: 25f2f7b097852edc5b2599601f8606eeea62f7bb
+
+COCOAPODS: 1.16.2

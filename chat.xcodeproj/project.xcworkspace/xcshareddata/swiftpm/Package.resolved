@@ -1,0 +1,78 @@
+{
+  "originHash" : "3d095ad60816d54552293c7159936f16b7938ab11f3778907ca67d4211f0ebc4",
+  "pins" : [
+    {
+      "identity" : "activityindicatorview",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/exyte/ActivityIndicatorView",
+      "state" : {
+        "revision" : "36140867802ae4a1d2b11490bcbbefe058001d14",
+        "version" : "1.2.1"
+      }
+    },
+    {
+      "identity" : "anchoredpopup",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/exyte/AnchoredPopup.git",
+      "state" : {
+        "revision" : "d7478c34e761725ff06ad74e44e675d0d56a4150",
+        "version" : "1.0.7"
+      }
+    },
+    {
+      "identity" : "chat",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/exyte/Chat",
+      "state" : {
+        "revision" : "2a7c727b736550ffca8051062169db36550502b8",
+        "version" : "2.6.3"
+      }
+    },
+    {
+      "identity" : "codescanner",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/twostraws/CodeScanner",
+      "state" : {
+        "revision" : "5e886430238944c7200fc9e10dbf2d9550dba865",
+        "version" : "2.5.2"
+      }
+    },
+    {
+      "identity" : "giphy-ios-sdk",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/Giphy/giphy-ios-sdk",
+      "state" : {
+        "revision" : "cdefbedc9f99d40cc64667a2bfaae67a1cf36fbb",
+        "version" : "2.2.12"
+      }
+    },
+    {
+      "identity" : "libwebp-xcode",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/SDWebImage/libwebp-Xcode",
+      "state" : {
+        "revision" : "0d60654eeefd5d7d2bef3835804892c40225e8b2",
+        "version" : "1.5.0"
+      }
+    },
+    {
+      "identity" : "mediapicker",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/exyte/MediaPicker.git",
+      "state" : {
+        "revision" : "c287ee410e5d9e9d642ed9c715042830f174a1d6",
+        "version" : "3.1.4"
+      }
+    },
+    {
+      "identity" : "starscream",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/daltoniam/Starscream",
+      "state" : {
+        "revision" : "c6bfd1af48efcc9a9ad203665db12375ba6b145a",
+        "version" : "4.0.8"
+      }
+    }
+  ],
+  "version" : 3
+}
