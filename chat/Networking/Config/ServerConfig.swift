@@ -9,7 +9,8 @@ struct ServerConfig {
     let pinnedCertificateData: Data?
 
     init(bundle: Bundle = .main,
-         env: [String: String] = ProcessInfo.processInfo.environment) {
+         env: [String: String] = ProcessInfo.processInfo.environment,
+         defaults: UserDefaults = .standard) {
         func url(for key: String, default defaultValue: String) -> URL {
             if let value = env[key] ?? bundle.infoDictionary?[key] as? String,
                let url = URL(string: value) {
@@ -18,12 +19,18 @@ struct ServerConfig {
             return URL(string: defaultValue)!
         }
 
-        httpBaseURL = url(for: "CHAT_HTTP_BASE_URL", default: "https://localhost:3000")
-        licenseBaseURL = url(for: "LICENSE_BASE_URL", default: "https://localhost:4000")
-        socketBaseURL = url(for: "PUSH_SOCKET_URL", default: "wss://localhost:3000")
+        if let host = defaults.string(forKey: "customServerHost"), !host.isEmpty {
+            httpBaseURL = URL(string: "https://\(host)")!
+            licenseBaseURL = URL(string: "https://\(host)")!
+            socketBaseURL = URL(string: "wss://\(host)")!
+        } else {
+            httpBaseURL = url(for: "CHAT_HTTP_BASE_URL", default: "https://chat.zeroleak.de")
+            licenseBaseURL = url(for: "LICENSE_BASE_URL", default: "https://license.zeroleak.de")
+            socketBaseURL = url(for: "PUSH_SOCKET_URL", default: "wss://chat.zeroleak.de")
+        }
 
-        if let base64 = env["PINNED_CERT_BASE64"] ?? bundle.infoDictionary?["PINNED_CERT_BASE64"] as? String,
-           let data = Data(base64Encoded: base64) {
+        if defaults.bool(forKey: "useCertificatePinning"),
+           let data = defaults.data(forKey: "pinnedCertificateData") {
             pinnedCertificateData = data
         } else {
             pinnedCertificateData = nil
