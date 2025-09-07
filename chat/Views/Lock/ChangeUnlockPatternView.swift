@@ -1,14 +1,48 @@
 import SwiftUI
+import UniformTypeIdentifiers
 
 struct ChangeUnlockPatternView: View {
     @Environment(\.dismiss) private var dismiss
     @State private var currentInput: [Int] = []
+    @State private var serverHost: String = UserDefaults.standard.string(forKey: "customServerHost") ?? ""
+    @State private var usePinning: Bool = UserDefaults.standard.bool(forKey: "useCertificatePinning")
+    @State private var certificateData: Data? = UserDefaults.standard.data(forKey: "pinnedCertificateData")
+    @State private var certificateName: String = UserDefaults.standard.string(forKey: "pinnedCertificateName") ?? ""
+    @State private var showingFileImporter = false
 
     var body: some View {
         VStack {
             Text("Neues Entsperrmuster")
                 .font(.title2)
                 .padding(.top)
+
+            TextField("Server-Host", text: $serverHost)
+                .textFieldStyle(.roundedBorder)
+                .foregroundColor(.black)
+                .autocorrectionDisabled()
+                .textInputAutocapitalization(.never)
+                .padding()
+
+            Toggle("Zertifikat-Pinning", isOn: $usePinning)
+                .padding(.horizontal)
+
+            if usePinning {
+                Button(certificateName.isEmpty ? "Zertifikat auswählen" : certificateName) {
+                    showingFileImporter = true
+                }
+                .padding(.horizontal)
+                .fileImporter(isPresented: $showingFileImporter, allowedContentTypes: [.data]) { result in
+                    switch result {
+                    case .success(let urls):
+                        if let url = urls.first, let data = try? Data(contentsOf: url) {
+                            certificateData = data
+                            certificateName = url.lastPathComponent
+                        }
+                    case .failure(let error):
+                        print("❌ Datei laden fehlgeschlagen:", error.localizedDescription)
+                    }
+                }
+            }
 
             Spacer()
 
@@ -68,6 +102,15 @@ struct ChangeUnlockPatternView: View {
         guard currentInput.count == 4 else { return }
         do {
             try UnlockManager.savePattern(currentInput)
+            UserDefaults.standard.set(serverHost, forKey: "customServerHost")
+            UserDefaults.standard.set(usePinning, forKey: "useCertificatePinning")
+            if usePinning, let data = certificateData {
+                UserDefaults.standard.set(data, forKey: "pinnedCertificateData")
+                UserDefaults.standard.set(certificateName, forKey: "pinnedCertificateName")
+            } else {
+                UserDefaults.standard.removeObject(forKey: "pinnedCertificateData")
+                UserDefaults.standard.removeObject(forKey: "pinnedCertificateName")
+            }
             dismiss()
         } catch {
             print("❌ Muster-Speichern fehlgeschlagen:", error.localizedDescription)
